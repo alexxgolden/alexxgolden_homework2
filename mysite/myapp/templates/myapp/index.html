@@ -1,0 +1,55 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<div class= "topnav">
+  <a href="#">Alexandria Golden</a>
+  <a href="#" style="float:right">Contact</a>
+  <a href="#" style="float:right">About</a>
+</div>
+
+<div class="header">
+  <h1>My Website</h1>
+  <p>design simple</p>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <div class="fakeimg" style="height:400px;"></div>
+    </div>
+
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <br><br><br>
+      <h2>Survey</h2><br>
+      <p>Stay awhile. Answer a few questions.</p>
+        {% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'myapp:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No myapps are available.</p>
+{% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+
+</div>
+
+</body>
+</html>
+
